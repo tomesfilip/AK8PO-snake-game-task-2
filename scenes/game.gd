@@ -114,8 +114,12 @@ func check_out_of_bounds():
 	pass
 	
 func check_food_eaten():
-	pass
-
+	if snake_data[0] == food_pos:
+		score += 1
+		$Hud.get_node("ScorePanel/ScoreLabel").text = "Score: " + str(score)
+		add_segment(snake_old_data[-1])
+		generate_food()
+		
 func check_self_eaten():
 	for i in range(1, len(snake_data)):
 		if snake_data[0] == snake_data[i]:
