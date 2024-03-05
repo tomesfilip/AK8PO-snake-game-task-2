@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bentqrsgafm"]
+[gd_scene load_steps=6 format=3 uid="uid://bentqrsgafm"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_q3fly"]
 [ext_resource type="PackedScene" uid="uid://bjqo0hkw7vak5" path="res://scenes/snake_body_segment.tscn" id="2_ja4vf"]
 [ext_resource type="Texture2D" uid="uid://s4qef2jw4daa" path="res://assets/bg.png" id="2_n0ut6"]
 [ext_resource type="PackedScene" uid="uid://bc50vh4tg26h5" path="res://scenes/hud.tscn" id="3_o40rc"]
+[ext_resource type="Texture2D" uid="uid://b7j6wba4m1ljn" path="res://assets/mouse.png" id="5_5psor"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_q3fly")
@@ -17,3 +18,9 @@ texture = ExtResource("2_n0ut6")
 
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="Food" type="Sprite2D" parent="."]
+texture = ExtResource("5_5psor")
+offset = Vector2(25, 25)
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
