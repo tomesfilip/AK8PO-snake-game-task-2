@@ -111,7 +111,8 @@ func _on_movement_timer_timeout():
 
 
 func check_out_of_bounds():
-	pass
+	if snake_data[0].x < 0 or snake_data[0].x > cells - 1 or snake_data[0].y < 0 or snake_data[0].y > cells - 1:
+		end_game()
 	
 func check_food_eaten():
 	if snake_data[0] == food_pos:

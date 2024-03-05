@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b4pkgsby2ddjf"]
+
+[node name="GameOverMenu" type="CanvasLayer"]
+
+[node name="GameOverPanel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResultLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RestartButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
