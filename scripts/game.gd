@@ -27,6 +27,9 @@ var can_move: bool
 
 
 func new_game():
+	get_tree().paused = false
+	get_tree().call_group("segments", "queue_free")
+	$GameOverMenu.hide()
 	score = 0
 	$Hud.get_node("ScorePanel/ScoreLabel").text = "Score: " + str(score)
 	move_direction = right
@@ -127,7 +130,10 @@ func check_self_eaten():
 			end_game()
 			
 func end_game():
-	pass
+	$GameOverMenu.show()
+	$MovementTimer.stop()
+	game_started = false
+	get_tree().paused = true
 	
 func generate_food():
 	while should_generate_food:
@@ -138,3 +144,7 @@ func generate_food():
 				should_generate_food = true
 	$Food.position = (food_pos * cell_size) + Vector2(0, cell_size)
 	should_generate_food = true
+
+
+func _on_game_over_menu_restart():
+	new_game()
